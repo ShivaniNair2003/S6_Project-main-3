@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Mentoring</title>
+    <style>
+        /* CSS styles as provided in your original HTML */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Request Mentoring</h1>
+        <form id="mentoringForm">
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br>
+            <button type="submit">Send Request</button>
+        </form>
+    </div>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-functions.js"></script> -->
+    <script type="module">
+        import "https://www.gstatic.com/firebasejs/10.8.1/firebase-functions.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+		signInWithEmailAndPassword,
+		 signOut
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { functions } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-functions.js";
+    
+
+	const firebaseConfig = {
+  apiKey: "AIzaSyDoxfFKwCiYFKLEbC8IX-5ZMwxAnh6dpC4",
+  authDomain: "alumni-website-6c196.firebaseapp.com",
+  projectId: "alumni-website-6c196",
+  storageBucket: "alumni-website-6c196.appspot.com",
+  messagingSenderId: "113955954393",
+  appId: "1:113955954393:web:b0ff98694d212dab3568c8",
+  measurementId: "G-0LDKHBW5BM"
+};
+const app = initializeApp(firebaseConfig);
+        console.log(app);
+
+        const form = document.getElementById('mentoringForm');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const message = document.getElementById('message').value;
+
+            try {
+                const sendEmail = functions().httpsCallable('sendEmail');
+                await sendEmail({ message });
+                alert('Email sent successfully!');
+            } catch (error) {
+                console.error('Error sending email:', error);
+                alert('Error sending email. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

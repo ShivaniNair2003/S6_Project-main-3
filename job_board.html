@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/job_board.css">
+
+    <!-- JQuery CDN link -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- Navigation start -->
+    <nav>
+        <div class="logo-and-text">
+            <img src="img/logo.png" width="100" height="120" class="logo" alt="img">
+            <span class="institution-name">LBS INSTITUTE OF TECHNOLOGY FOR WOMEN</span>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <i id="menu-close" class="fas fa-times"></i>
+                <li><a href="eventspage.html">Events</a></li>
+                <li><a href="job_board.html" class="active">Job Board</a></li>
+                <li><a href="messageboard.html" >Message Board</a></li>  
+                <li><a href="alumniconnect.html">Alumni</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+
+            <img src="img/menu.png" id="menu-btn" alt="">
+        </div>
+    </nav>
+    <!-- Navigation ends -->
+
+    <!-- Job board section -->
+    <section id="course">
+        <h1>Job Board</h1>
+
+        <div>
+            <form id="search-form" role="search">
+                <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content">
+                <button>Search</button>
+            </form>
+        </div>
+
+        <div class="job-posts">
+        </div>
+    </section>
+
+
+    <button class="add-button" id="openPopup">+</button>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <h2>Create New Job Posting</h2>
+        <form id="jobPostingForm">
+            <label for="jobTitle">Job Title:</label><br>
+            <input type="text" id="jobTitle" name="jobTitle"><br><br>
+            <label for="jobDescription">Job Description:</label><br>
+            <textarea id="jobDescription" name="jobDescription"></textarea><br><br>
+            <label for="jobLocation">Job Location:</label><br>
+            <input type="text" id="jobLocation" name="jobLocation"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+<!-- Footer section starts from here -->
+<footer>
+	<div class="footer-col">
+			<h3>Social Media</h3> 
+			<li><a href="https://www.facebook.com/lbsitwpoojappura">Facebook</a></li>
+			<li>Twitter</li>
+			<li><a href="https://www.facebook.com/lbsitwpoojappura">Instagram</a></li>
+			<li>Youtube</li>
+	</div>
+
+	<div class="footer-col">
+			<h3>Contact</h3>
+			<li>LBSITW,Poojappura,TVPM- 695012</li>
+			<li>Ph. Office1: 0471 2349232</li>
+			<li>Ph. Office2: 04712343395</li>
+			<li>Office Fax: 0471 2343395
+			</li>
+	</div>
+
+	<div class="footer-col">
+			<h3>About this site</h3>
+			<li>©2020 LBSITW</li>
+			<li><a href="http://campus.lbsitw.ac.in/">Website: www.lbt.ac.in</a></li>
+	</div>
+
+	<div class="copyright">
+			<div class="pro-links">
+					<img src="img/socialmed.png" width="150" height="50" alt="img">
+			</div>
+	</div>
+</footer>
+<!-- Footer section ends from here -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        
+
+        const firebaseConfig = {
+                apiKey: "AIzaSyDoxfFKwCiYFKLEbC8IX-5ZMwxAnh6dpC4",
+                authDomain: "alumni-website-6c196.firebaseapp.com",
+                projectId: "alumni-website-6c196",
+                storageBucket: "alumni-website-6c196.appspot.com",
+                messagingSenderId: "113955954393",
+                appId: "1:113955954393:web:b0ff98694d212dab3568c8",
+                measurementId: "G-0LDKHBW5BM"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore(app); 
+        console.log(app);
+
+        const jobDetailsRef = collection(db, "job_details");
+        getDocs(jobDetailsRef)
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const jobData = doc.data();
+                    console.log(jobData);
+                    const jobPostHTML = `
+                <div class="job-post">
+                    <h3>${jobData.jobTitle}</h3>
+                    <p>Description: ${jobData.jobDescription}</p>
+                    <p>Location: ${jobData.jobLocation}</p>
+                    <p>Posted by: ${jobData.postedBy}</p>
+                    <p>Date: ${jobData.date}</p>
+                    <a href="#">Apply Now</a>
+                </div>
+            `;
+            $('.job-posts').append(jobPostHTML);
+                });
+            })
+            .catch((error) => {
+                console.error("Error getting alumni profiles: ", error);
+            });
+
+        // Function to add job details to Firestore
+        const addJobToFirestore = async (jobTitle, jobDescription, jobLocation) => {
+        try {
+            const docRef = await addDoc(collection(db, "job_details"), {
+                jobTitle: jobTitle,
+                jobDescription: jobDescription,
+                jobLocation: jobLocation
+            });
+            console.log("Document written with ID: ", docRef.id);
+            // Optionally, you can display a success message here
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            // Optionally, you can display an error message here
+        }
+    };
+
+    $(document).ready(function() {
+        // Open pop-up when the plus icon is clicked
+        $('#openPopup').click(function() {
+            $('#overlay').fadeIn();
+            $('#popup').fadeIn();
+        });
+
+        // Close pop-up when close button is clicked
+        $('#closePopup').click(function() {
+            $('#overlay').fadeOut();
+            $('#popup').fadeOut();
+        });
+
+        // Close pop-up when overlay is clicked
+        $('#overlay').click(function() {
+            $('#overlay').fadeOut();
+            $('#popup').fadeOut();
+        });
+
+        // Prevent overlay from closing pop-up when clicked inside the pop-up
+        $('#popup').click(function(event) {
+            event.stopPropagation();
+        });
+
+        // Form submission event listener
+        $('#jobPostingForm').submit(function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+            const jobTitle = $('#jobTitle').val();
+            const jobDescription = $('#jobDescription').val();
+            const jobLocation = $('#jobLocation').val();
+
+            // Add job details to Firestore
+            addJobToFirestore(jobTitle, jobDescription, jobLocation);
+
+            // Close the pop-up
+            $('#overlay').fadeOut();
+            $('#popup').fadeOut();
+        });
+
+        // Show menu links on burger click
+        $('#menu-btn').click(function(){
+            $('nav .navigation ul').addClass('active')
+        });
+
+        // Hide navbar on click function
+        $('#menu-close').click(function(){
+            $('nav .navigation ul').removeClass('active')
+        });
+    });
+    </script>
+</body>
+</html>

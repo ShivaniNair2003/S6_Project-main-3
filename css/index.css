@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap');
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgb(35, 35, 85);
+}
+
+span {
+    font-size: .9rem;
+}
+
+h6 {
+    font-size: 1.1rem;
+    color: rgb(24, 24, 49);
+}
+
+/* Logo and Text Styling */
+.logo-and-text {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically */
+}
+
+.logo {
+    margin-right: 5px; /* Add spacing between the image and text */
+}
+
+.institution-name {
+    color: #1d4f7f;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 6px; /* Adjust margin-top as needed to move the text down */
+}
+
+/* Navigation Styling */
+nav {
+    position: fixed; /* Fixed position to keep it at the top */
+    top: 0; /* Align to the top of the viewport */
+    width: 100%; /* Take the full width of the viewport */
+    background-color: white;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+nav .logo {
+    width: 150px;
+    cursor: pointer;
+}
+
+nav .navigation {
+    display: flex;
+}
+
+#menu-btn {
+    width: 30px;
+    height: 30px;
+    display: none;
+}
+
+#menu-close {
+    display: none;
+}
+
+nav .navigation ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav .navigation ul li {
+    list-style: none;
+    margin-left: 30px;
+}
+
+nav .navigation ul li a {
+    text-decoration: none;
+    color: rgb(21, 21, 100);
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav .navigation ul li a.active,
+nav .navigation ul li a:hover {
+    color: #000069;
+}
+
+/* Hero Section Styling */
+#home {
+    background-image: linear-gradient(rgba(9, 5, 54, 0.3), rgba(5,4,46,0.7)), url("img/back.jpg");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 40px;
+}
+
+#home h2 {
+    color: #fff;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+#home p {
+    width: 50%;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 25px;
+}
+
+#home .btn {
+    margin-top: 30px;
+}
+
+#home a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 13px 35px;
+    background-color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+#home a.blue {
+    color: #fff;
+    background: rgb(21, 21, 100);
+    transition: 0.3s ease;
+}
+
+#home a.blue:hover {
+    color: rgb(21, 21, 100);
+    background: #fff;
+}
+
+#home a.yellow {
+    color: #fff;
+    background: #fdc938;
+    transition: 0.3s ease;
+}
+
+#home a.yellow:hover {
+    color: rgb(0, 0, 0);
+    background: #fff;
+}
+
+/* Footer Social Media Links Styling */
+footer .footer-col a {
+    color: grey; /* Set link color to grey */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+footer .footer-col a:hover {
+    color: white; /* Change link color to white on hover */
+}

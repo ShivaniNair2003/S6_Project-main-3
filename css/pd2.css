@@ -1,0 +1,107 @@
+/* signup.css */
+
+.sign-container {
+    max-width: 400px;
+    margin: 100px auto; /* Add margin to the top and bottom */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sign-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signup-form .form-group {
+    margin-bottom: 20px;
+  }
+  input[type="number"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccccccec;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Style the calendar icon */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #7db0e6;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .signup-form input[type="text"],
+  .signup-form input[type="email"],
+  .signup-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1b3c5f;
+    color: #ffffffdc;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-form button:hover {
+    background-color: #032142;
+  }
+  
+  
+.sign-container #tag-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  
+.sign-container .tag-item {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #294c6b;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+ .sign-container .tag-item span {
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  .sign-container .interest button {
+    width: 0%;
+    padding: 0px;
+    background-color: #6b9ed5;
+    color: #ffffffdc;
+    border: none;
+    border-radius: 0%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  

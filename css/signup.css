@@ -1,0 +1,152 @@
+
+/* signup.css */
+.logo-and-text {
+	display: flex; /* Use flexbox for layout */
+	align-items: center; /* Align items vertically */
+}
+
+.logo {
+	margin-right: 5px; /* Add spacing between the image and text */
+}
+
+.institution-name {
+	color: #1d4f7f;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin-top: 6px; /* Adjust margin-top as needed to move the text down */
+}
+.sign-container {
+  max-width: 400px;
+  margin: 200px auto; 
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sign-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Add this CSS to your existing CSS file or create a new one */
+
+/* Hide the alumni/student specific fields by default */
+.hidden {
+  display: none;
+}
+
+/* Style for form group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style for radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Style for submit button */
+button[type="button"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+/* Customize select element */
+form.signup-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  background-color: #f8f8f8;
+  color: #333;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* Remove default arrow for Safari */
+  -moz-appearance: none; /* Remove default arrow for Firefox */
+}
+
+/* Style for the arrow icon */
+form.signup-form select::after {
+  content: '\25BC';  /* Unicode character for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* Make the arrow not clickable */
+}
+
+/* Style for the focus state of the select element */
+form.signup-form select:focus {
+  outline: none;
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a shadow on focus */
+}
+
+/* Style for the hover state of the select element */
+form.signup-form select:hover {
+  background-color: #e6e6e6; /* Change background color on hover */
+}

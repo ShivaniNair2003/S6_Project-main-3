@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+
+	<!-- font Awesome CDN link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+	<!-- External CSS -->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
+
+	<!-- JQuery CDN link -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="js/signup.js" defer></script>
+	<script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+	<!-- <script src="js/firebasesetup.js" defer></script> -->
+</head>
+<body>
+	<!-- Navigation start -->
+	<nav>
+		<div class="logo-and-text">
+			<img src="img/logo.png" width="100" height="120" class="logo" alt="img">
+			<span class="institution-name">LBS INSTITUTE OF TECHNOLOGY FOR WOMEN</span>
+	        </div>
+
+		<div class="navigation">
+			<ul>
+				<i id="menu-close" class="fas fa-times"></i>
+				<li><a href="signup.html" class="active">Sign Up</a></li>
+				<li><a href="login.html">Login</a></li>
+				
+			</ul>
+
+			<img src="img/menu.png" id="menu-btn" alt="">
+		</div>
+	</nav>
+	<!-- Navigation ends -->
+
+<!-- Sign container starts from here -->
+<div class="sign-container">
+    <h2>Sign Up</h2>
+	<form name="signup-form" id="signup_form" method="post" action="#" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div class="form-group">
+            <label for="userType">Are you an alumni or a student?</label><br>
+            <input type="radio" id="alumni" name="userType" value="alumni" required>
+            <label for="alumni">Alumni</label>
+            <input type="radio" id="student" name="userType" value="student" required>
+            <label for="student">Student</label>
+        </div>
+        <div id="alumniDetails" class="hidden">
+            <!-- Fields specific to alumni -->
+            <div class="form-group">
+                <label for="alumniID">Alumni ID</label>
+                <input type="text" id="alumniID" name="alumniID" >
+            </div>
+			<div class="form-group">
+                <label for="alumniName">Full Name</label>
+                <input type="text" id="alumniName" name="alumniName" >
+            </div>
+			<div class="form-group">
+                <label for="alumniBatch">Graduation Year</label>
+				<select id="alumniBatch" name="alumniBatch" >
+					<option></option>
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+					<option value="2005">2005</option>
+					<option value="2006">2006</option>
+					<option value="2007">2007</option>
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+					<option value="2011">2011</option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+					<option value="2022">2022</option>
+					<option value="2023">2023</option>
+				</select>
+            </div>
+			<div class="form-group">
+				<label for="alumniProgram">Program</label>
+				<select id="alumniProgram" name="alumniProgram" >
+					<option></option>
+					<option value="cse">Computer Science and Engineering</option>
+					<option value="ce">Civil Engineering</option>
+					<option value="ece">Electronics and Communication Engineering</option>
+					<option value="mech">Mechanical Engineering</option>
+					<option value="it">Information Technology</option>
+					
+				  </select>
+			</div>
+			<div class="form-group">
+                <label for="alumniJob">Current Profession</label>
+                <input type="text" id="alumniJob" name="alumniJob" >
+            </div>
+			<div class="form-group">
+                <label for="alumniCompany">Company</label>
+                <input type="text" id="alumniCompany" name="alumniCompany" >
+            </div>
+			<div class="form-group">
+				<label for="alumniLinkedIn">LinkedIn Profile</label>
+				<input type="text" id="alumniLinkedIn" name="alumniLinkedIn">
+			</div>
+			<div class="form-group">
+				<label for="mentor">Are you willing to mentor?</label><br>
+				<input type="radio" id="mentor_yes" name="mentor" value="yes">
+				<label for="mentor_yes">Yes</label>
+				<input type="radio" id="mentor_no" name="mentor" value="no">
+				<label for="mentor_no">No</label>
+			</div>
+        </div>
+        <div id="studentDetails" class="hidden">
+			<!-- Fields specific to students -->
+			<div class="form-group">
+				<label for="studentID">Student ID</label>
+				<input type="text" id="studentID" name="studentID" >
+			</div>
+			<div class="form-group">
+				<label for="studentName">Full Name</label>
+				<input type="text" id="studentName" name="studentName" >
+			</div>
+			<div class="form-group">
+				<label for="studentBatch">Year of Admission</label>
+				<select id="studentBatch" name="studentBatch" >
+					<option></option>
+					<option value="2010">2010</option>
+					<option value="2011">2011</option>
+					<option value="2012">2012</option>
+					<option value="2013">2013</option>
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+					<option value="2022">2022</option>
+					<option value="2023">2023</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="studentProgram">Program</label>
+				<select id="studentProgram" name="studentProgram" >
+					<option></option>
+					<option value="cse">Computer Science and Engineering</option>
+					<option value="ce">Civil Engineering</option>
+					<option value="ece">Electronics and Communication Engineering</option>
+					<option value="mech">Mechanical Engineering</option>
+					<option value="it">Information Technology</option>
+				  </select>
+			</div>
+			<div class="form-group">
+				<label for="studentLinkedIn">LinkedIn Profile</label>
+				<input type="text" id="studentLinkedIn" name="studentLinkedIn">
+			</div>
+		</div>
+		<button type="button" id="signup" name="signup" >Sign Up</button>
+        <!-- <button id="signup-btn" type="submit">Sign Up</button> -->
+    </form>
+</div>
+<!-- Sign container ends from here -->
+
+<!-- Footer section starts from here -->
+<footer>
+	<div class="footer-col">
+		<h3>Social Media</h3> 
+		<li><a href="https://www.facebook.com/lbsitwpoojappura">Facebook</a></li>
+		<li>Twitter</li>
+		<li><a href="https://www.facebook.com/lbsitwpoojappura">Instagram</a></li>
+		<li>Youtube</li>
+	</div>
+
+	<div class="footer-col">
+		<h3>Contact</h3>
+		<li>LBSITW,Poojappura,TVPM- 695012</li>
+		<li>Ph. Office1: 0471 2349232</li>
+		<li>Ph. Office2: 04712343395</li>
+		<li>Office Fax: 0471 2343395
+		</li>
+	</div>
+
+	<div class="footer-col">
+		<h3>About this site</h3>
+		<li>©2020 LBSITW</li>
+		<li><a href="http://campus.lbsitw.ac.in/">Website: www.lbt.ac.in</a></li>
+	</div>
+
+	<div class="copyright">
+		<div class="pro-links">
+			<img src="img/socialmed.png" width="150" height="50" alt="img">
+		</div>
+	</div>
+</footer>	
+	<!-- Footer section ends from here -->
+
+	<script>
+		function redirectToProfilePage(event) {
+			event.preventDefault();
+
+			window.location.href = "profile.html";
+		}
+	</script>
+	
+	<script>
+		// Show menu links on burger click
+		$('#menu-btn').click(function(){
+			$('nav .navigation ul').addClass('active')
+		});
+		$('#menu-close').click(function(){
+			$('nav .navigation ul').removeClass('active')
+		});
+	</script>
+</body>
+
+
+
+<script type="module">
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+		signInWithEmailAndPassword,
+		 signOut
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+	import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+    
+
+	const firebaseConfig = {
+  apiKey: "AIzaSyDoxfFKwCiYFKLEbC8IX-5ZMwxAnh6dpC4",
+  authDomain: "alumni-website-6c196.firebaseapp.com",
+  projectId: "alumni-website-6c196",
+  storageBucket: "alumni-website-6c196.appspot.com",
+  messagingSenderId: "113955954393",
+  appId: "1:113955954393:web:b0ff98694d212dab3568c8",
+  measurementId: "G-0LDKHBW5BM"
+};
+
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+	const auth = getAuth();
+	const db = getFirestore(app); 
+	console.log(app);
+
+	
+
+	//----- New Registration code start	  
+	document.getElementById("signup").addEventListener("click", function() {
+		var email =  document.getElementById("email").value;
+		var password = document.getElementById("password").value;
+		var confirm_password = document.getElementById("confirm_password").value;
+		if(password==confirm_password)
+		{
+			createUserWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+			// Signed in 
+			const user = userCredential.user;
+			console.log(user);
+			alert("Registration successfully!!");
+			var userType = document.querySelector('input[name="userType"]:checked').value;
+			var userDetails = {};
+			var userRoleDetails = {};
+
+                    if (userType === "alumni") {
+                        userDetails = {
+							username: document.getElementById("username").value,
+							email: document.getElementById("email").value,
+							role: 'alumni',
+                            alumniID: document.getElementById("alumniID").value,
+                            alumniName: document.getElementById("alumniName").value,
+                            alumniBatch: document.getElementById("alumniBatch").value,
+                            alumniProgram: document.getElementById("alumniProgram").value,
+                            alumniJob: document.getElementById("alumniJob").value,
+                            alumniCompany: document.getElementById("alumniCompany").value,
+							alumniLinkedIn:document.getElementById("alumniLinkedIn").value,
+							mentor: document.querySelector('input[name="mentor"]:checked').value,
+
+                        };
+						userRoleDetails ={
+							username: document.getElementById("username").value,
+							email: document.getElementById("email").value,
+							role: 'alumni',
+						};
+                    } else if (userType === "student") {
+                        userDetails = {
+							username: document.getElementById("username").value,
+							email: document.getElementById("email").value,
+							role: 'student',
+                            studentID: document.getElementById("studentID").value,
+                            studentName: document.getElementById("studentName").value,
+                            studentBatch: document.getElementById("studentBatch").value,
+                            studentProgram: document.getElementById("studentProgram").value,
+							studentLinkedIn: document.getElementById("studentLinkedIn").value,
+                        };
+						userRoleDetails = {
+							username: document.getElementById("username").value,
+							email: document.getElementById("email").value,
+							role: 'student',
+						};
+                    }
+					
+					// Store user details in Firestore
+                    addDoc(collection(db, userType + "_details"), userDetails)
+                        .then((docRef) => {
+                            console.log("Document written with ID: ", docRef.id);
+							window.location.href = "profile.html";
+                            // Redirect based on user type
+                            // if (userType === "alumni") {
+                            //     window.location.href = "alumni_profile.html";
+                            // } else if (userType === "student") {
+                            //     window.location.href = "student_profile.html";
+                            // }
+                        })
+						addDoc(collection(db, "users"), userRoleDetails)
+                        .then((docRef) => {
+                            console.log("Added to users Doc", docRef.id);
+							
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                            alert(error);
+                        });
+
+					})
+			.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			// ..
+			console.log(errorMessage);
+			alert(error);
+			});
+			
+		}
+		else
+		{
+			alert("Passwords do not match");
+        	return;
+		}
+				  		  
+	});
+	
+
+  </script>
+</html>

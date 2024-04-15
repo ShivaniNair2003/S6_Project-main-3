@@ -1,0 +1,114 @@
+<!-- <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";    
+
+    const firebaseConfig = {
+	apiKey: "AIzaSyDoxfFKwCiYFKLEbC8IX-5ZMwxAnh6dpC4",
+	authDomain: "alumni-website-6c196.firebaseapp.com",
+	projectId: "alumni-website-6c196",
+	storageBucket: "alumni-website-6c196.appspot.com",
+	messagingSenderId: "113955954393",
+	appId: "1:113955954393:web:b0ff98694d212dab3568c8",
+	measurementId: "G-0LDKHBW5BM"
+	};
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+	console.log(app);
+	console.log(auth);
+
+    function signUp(username, email, password, confirmPassword, userType) {
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            console.log("User signed up:", user.uid);
+
+            // Additional actions based on user type (alumni or student)
+            if (userType === 'alumni') {
+                // Perform actions for alumni
+                console.log("User is an alumni");
+                // Redirect to alumni-specific page or perform other actions
+            } else if (userType === 'student') {
+                // Perform actions for student
+                console.log("User is a student");
+                // Redirect to student-specific page or perform other actions
+            }
+
+            // Redirect to profile or dashboard page
+            window.location.href = "profile.html";
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.error("Error signing up:", errorMessage);
+            // Handle error, e.g., display error message to user
+        });
+}
+
+function handleFormSubmission(event) {
+    event.preventDefault(); 
+
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirm_password').value;
+    var userType = document.querySelector('input[name="userType"]:checked').value;
+
+    console.log(username, email, password, confirmPassword);
+
+    signUp(username, email, password, confirmPassword, userType);
+}
+
+document.querySelector('.signup-form').addEventListener('submit', handleFormSubmission);
+
+
+    
+
+</script> -->
+
+
+
+
+          
+          <div class="container">
+            <!-- Content inside the container -->
+            <h2>Profile</h2>
+			<button id="editProfileBtn" class="edit-button">Edit Profile</button>
+        </div>
+        <span class="wireframe1-text08"><span>Name</span></span>
+        <span class="wireframe1-text10"><span>Company/Role</span></span>
+        <span class="wireframe1-text12"><span>Graduation Year</span></span>
+        <span class="wireframe1-text14"><span>Program</span></span>
+        <span class="wireframe1-text16"><span>Skills</span></span>
+        <span class="wireframe1-text18"><span>Interests</span></span>
+        <span class="wireframe1-text20"><span>Alexandra</span></span>
+        <span class="wireframe1-text22"><span>2025</span></span>
+        <span class="wireframe1-text24"><span>CSE</span></span>
+        <span class="wireframe1-text26"><span>Amazon</span></span>
+        <span class="wireframe1-text28"><span>Designing</span></span>
+        <span class="wireframe1-text30"><span>UX Designing</span></span>
+        <span class="wireframe1-text32"><span>About</span></span>
+        <span class="wireframe1-text34">
+            <span>
+                Enthusiastic and motivated Computer Science graduate with a strong
+                foundation in algorithms, data structures, and software engineering
+                principles. Proficient in multiple programming languages including
+                Java, Python, and JavaScript. Experienced in developing web
+                applications, software solutions, and optimizing algorithms for
+                efficiency.
+            </span>
+        </span>
+        <img src="img\pro1.webp" alt="img1545" class="wireframe1-img1" />
+        </div>
+    </section>

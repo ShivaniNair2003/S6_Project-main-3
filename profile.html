@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile</title>
+
+	<!-- font Awesome CDN link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+	<!-- External CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/profile.css">
+
+	<!-- JQuery CDN link -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!-- Navigation start -->
+	<nav>
+		<img src="img/logo.png" class="logo" alt="">
+
+		<div class="navigation">
+			<ul>
+				<i id="menu-close" class="fas fa-times"></i>
+				<li><a href="eventspage.html" >Events</a></li>
+				<li><a href="job_board.html">Job Board</a></li>
+				<li><a href="messageboard.html">Message Board</a></li>
+        		<li><a href="alumniconnect.html">Alumni</a></li>
+				<li><a href="profile.html" class="active">Profile</a></li>
+			</ul>
+
+			<img src="img/menu.png" id="menu-btn" alt="">
+		</div>
+	</nav>
+	<!-- Navigation ends -->
+
+  
+	<!-- Loading Section Starts -->
+    <div id="loading-spinner" class="loading-spinner"></div>
+    <!-- Loading Section Ends -->
+
+
+	<script>
+		// Show menu links on burger click
+		$('#menu-btn').click(function(){
+			$('nav .navigation ul').addClass('active')
+		});
+
+		// Hide navbar on click function
+		$('#menu-close').click(function(){
+			$('nav .navigation ul').removeClass('active')
+		});
+	</script>
+	<script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+        import {
+            getAuth,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, query as firestoreQuery, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyDoxfFKwCiYFKLEbC8IX-5ZMwxAnh6dpC4",
+            authDomain: "alumni-website-6c196.firebaseapp.com",
+            projectId: "alumni-website-6c196",
+            storageBucket: "alumni-website-6c196.appspot.com",
+            messagingSenderId: "113955954393",
+            appId: "1:113955954393:web:b0ff98694d212dab3568c8",
+            measurementId: "G-0LDKHBW5BM"
+            };
+    
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore(app); 
+        console.log(app);
+    
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                console.log("User Signed In");
+                var uid = user.uid;
+                var email = user.email;
+                console.log(email);
+				const userDetailsRef = collection(db,"users");
+                const q = firestoreQuery(userDetailsRef, where("email", "==", email));
+                const querySnapshot = await getDocs(q);
+				const alumniDetailsRef = collection(db,"alumni_details");
+				const alumq = firestoreQuery(alumniDetailsRef, where("email", "==", email));
+				const alumniSnapshot = await getDocs(alumq);
+				const studentDetailsRef = collection(db,"student_details");
+				const studq = firestoreQuery(studentDetailsRef, where("email", "==", email));
+				const studentSnapshot = await getDocs(studq);
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    console.log("Role:", data.role);
+                    // Redirect user based on role
+                if (data.role === "alumni") {
+                    console.log('in alumni if ')
+                    window.location.href = "alumni_profile.html";
+                } else if (data.role === "student") {
+                    console.log("in student if ")
+                    window.location.href = "student_profile.html";
+                } else {
+                    // Handle unknown role
+                    console.error("Unknown user role:", user.role);
+                    alert("Unknown user role. Please contact support.");
+                }
+                        
+                    });
+                } else {
+                    
+                    console.log("User Signed Out");
+                    
+                }
+        });
+    </script>
+
+</body>
+</html>

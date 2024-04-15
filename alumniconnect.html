@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni</title>
+
+    <!-- font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/alumni_connect.css">
+
+    <!-- JQuery CDN link -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- Navigation start -->
+    <nav>
+        <div class="logo-and-text">
+            <img src="img/logo.png" width="100" height="120" class="logo" alt="img">
+            <span class="institution-name">LBS INSTITUTE OF TECHNOLOGY FOR WOMEN</span>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <i id="menu-close" class="fas fa-times"></i>
+                <li><a href="eventspage.html" >Events</a></li>
+                <li><a href="job_board.html"  >Job Board</a></li>
+                <li><a href="messageboard.html" >Message Board</a></li>  
+                <li><a href="alumniconnect.html" class="active">Alumni</a></li>
+                <li><a href="profile.html" >Profile</a></li>
+            </ul>
+
+            <img src="img/menu.png" id="menu-btn" alt="">
+        </div>
+    </nav>
+    <!-- Navigation ends -->
+
+    
+    <!-- Alumni section starts from here -->
+    <section id="course">
+        <h1>Alumni Connect</h1>
+
+        <div>
+            <form id="search-form" role="search">
+                <input type="search" id="query" name="q"
+                placeholder="Search for Alumni"
+                aria-label="Search through site content">
+                <button>Search</button>
+            </form>
+        </div>
+
+        <section class="alumni-section">
+            <div id="alumni-profiles"></div>
+             <div class="alumni-profile">
+                <img src="img\pro2.webp" alt="Profile Picture">
+                <h2>John Doe</h2>
+                <p>Class of 2010</p>
+                <div class="details">
+                    <p>Software Engineer at XYZ Company</p>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="alumni-profile">
+                <img src="img\pro2.webp" alt="Profile Picture">
+                <h2>Jane Smith</h2>
+                <p>Class of 2012</p>
+                <div class="details">
+                    <p>Marketing Manager at ABC Corporation</p>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div> 
+
+
+
+            <!-- Add more alumni profiles as needed -->
+        </section>
+        <!-- Alumni section ends from here -->
+    </section>
+
+<!-- Footer section starts from here -->
+<footer>
+	<div class="footer-col">
+			<h3>Social Media</h3> 
+			<li><a href="https://www.facebook.com/lbsitwpoojappura">Facebook</a></li>
+			<li>Twitter</li>
+			<li><a href="https://www.facebook.com/lbsitwpoojappura">Instagram</a></li>
+			<li>Youtube</li>
+	</div>
+
+	<div class="footer-col">
+			<h3>Contact</h3>
+			<li>LBSITW,Poojappura,TVPM- 695012</li>
+			<li>Ph. Office1: 0471 2349232</li>
+			<li>Ph. Office2: 04712343395</li>
+			<li>Office Fax: 0471 2343395
+			</li>
+	</div>
+
+	<div class="footer-col">
+			<h3>About this site</h3>
+			<li>©2020 LBSITW</li>
+			<li><a href="http://campus.lbsitw.ac.in/">Website: www.lbt.ac.in</a></li>
+	</div>
+
+	<div class="copyright">
+			<div class="pro-links">
+					<img src="img/socialmed.png" width="150" height="50" alt="img">
+			</div>
+	</div>
+</footer>
+<!-- Footer section ends here -->
+  
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        
+
+        const firebaseConfig = {
+                apiKey: "AIzaSyDoxfFKwCiYFKLEbC8IX-5ZMwxAnh6dpC4",
+                authDomain: "alumni-website-6c196.firebaseapp.com",
+                projectId: "alumni-website-6c196",
+                storageBucket: "alumni-website-6c196.appspot.com",
+                messagingSenderId: "113955954393",
+                appId: "1:113955954393:web:b0ff98694d212dab3568c8",
+                measurementId: "G-0LDKHBW5BM"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore(app); 
+        console.log(app);
+
+        const alumniProfilesRef = collection(db, "alumni_details");
+getDocs(alumniProfilesRef)
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const alumniData = doc.data();
+            console.log(alumniData);
+
+            // Check if the mentor field is 'yes'
+            if (alumniData.mentor === 'yes') {
+                // If yes, include the mail icon
+                const alumniProfileHTML = `
+                    <div class="alumni-profile">
+                        <img src="img/pro2.webp" alt="img/pro2.webp">
+                        <h2>${alumniData.alumniName}</h2>
+                        <p>Class of ${alumniData.alumniBatch}</p>
+                        <div class="details">
+                            <p>${alumniData.alumniJob} at ${alumniData.alumniCompany}</p>
+                            <a href="${alumniData.alumniLinkedIn}"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:${alumniData.email}"><i class="fas fa-envelope"></i></a> <!-- Add the chat icon for sending emails -->
+                        </div>
+                    </div>
+                `;
+                // Append alumni profile HTML to the #alumni-profiles section
+                $('#alumni-profiles').append(alumniProfileHTML);
+            } else {
+                // If mentor field is not 'yes', exclude the mail icon
+                const alumniProfileHTML = `
+                    <div class="alumni-profile">
+                        <img src="img/pro2.webp" alt="img/pro2.webp">
+                        <h2>${alumniData.alumniName}</h2>
+                        <p>Class of ${alumniData.alumniBatch}</p>
+                        <div class="details">
+                            <p>${alumniData.alumniJob} at ${alumniData.alumniCompany}</p>
+                            <a href="${alumniData.alumniLinkedIn}"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                `;
+                // Append alumni profile HTML to the #alumni-profiles section
+                $('#alumni-profiles').append(alumniProfileHTML);
+            }
+        });
+    })
+    .catch((error) => {
+        console.error("Error getting alumni profiles: ", error);
+    });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Show menu links on burger click
+            $('#menu-btn').click(function(){
+                $('nav .navigation ul').addClass('active')
+            });
+
+            // Hide navbar on click function
+            $('#menu-close').click(function(){
+                $('nav .navigation ul').removeClass('active')
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* CSS for Alumni section */
+.alumni-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items at the start of the flex container */
+    margin-top: 100px;
+}
+
+.alumni-profile {
+    width: calc(30% - 20px); /* Adjust width as needed */
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    height: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Add transition effect */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.alumni-profile:hover {
+    width: calc(33.33% - 20px); /* Expand the profile card on hover */
+}
+
+.alumni-profile img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.alumni-profile h2 {
+    margin-top: 0;
+    color: #333;
+    overflow: hidden; /* Hide overflow content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display ellipsis for overflow text */
+}
+
+.alumni-profile p {
+    margin: 5px 0;
+    color: #333; /* Change text color to contrast with background */
+    overflow: hidden; /* Hide overflow content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Display ellipsis for overflow text */
+}
+
+.alumni-profile .details {
+    display: none; /* Hide additional details by default */
+    transition: all 0.3s ease; /* Add transition effect */
+}
+
+.alumni-profile:hover .details {
+    display: block; /* Show additional details on hover */
+}
+
+.alumni-profile .details a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Original CSS for Search Form */
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+input[type="search"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+input[type="search"]:focus {
+    outline: none;
+    border-color: #007bff; /* Change border color on focus */
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darken the color on hover */
+}

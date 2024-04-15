@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign Up</title>
+
+	<!-- font Awesome CDN link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+	<!-- External CSS -->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/personaldetails.css">
+
+	<!-- JQuery CDN link -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+	<!-- Navigation start -->
+	<nav>
+		<img src="img\logo.svg" class="logo" alt="">
+
+		<div class="navigation">
+			<ul>
+				<i id="menu-close" class="fas fa-times"></i>
+				<li><a href="signup.html" class="active">Sign Up</a></li>
+				<li><a href="login.html">Login</a></li>
+				
+			</ul>
+
+			<img src="img/menu.png" id="menu-btn" alt="">
+		</div>
+	</nav>
+	<!-- Navigation ends -->
+
+<!-- Sign container starts from here -->
+<div class="sign-container">
+    <h1>Welcome to _________</h1>
+    <h2>Complete Your Profile</h2>
+    <form action="pd2.html"  class="signup-form">
+        <div class="form-group">
+            <form action="#" method="post">
+                
+                  <label for="full-name">Full Name:</label>
+                  <input type="text" id="full-name" name="full-name" required>
+                
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+        <div class="form-group">
+            <label for="graduation_year">Graduation Year: </label>
+            <select id="graduation_year" name="graduation_year">
+                <option></option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                </select>
+        </div>
+        
+        <button type="submit">Next</button>
+    </form>
+</div>
+<!-- Sign container ends from here -->
+
+
+
+	<!-- Footer section starts from here -->
+	<footer>
+		<div class="footer-col">
+			<h3>Top Products</h3>
+			<li>Manage Reputation</li>
+			<li>Power Tools</li>
+			<li>Managed Website</li>
+			<li>Marketing Service</li>
+		</div>
+
+		<div class="footer-col">
+			<h3>Power Tools</h3>
+			<li>Jobs</li>
+			<li>Marketing Service</li>
+			<li>Top Products</li>
+			<li>Manage Reputation</li>
+		</div>
+
+		<div class="footer-col">
+			<h3>Power Tools</h3>
+			<li>Managed Website</li>
+			<li>Manage Reputation</li>
+			<li>Top Products</li>
+			<li>Marketing Service</li>
+		</div>
+
+		<div class="footer-col">
+			<h3>Guides</h3>
+			<li>Research</li>
+			<li>Experts</li>
+			<li>Managed Website</li>
+			<li>Marketing Service</li>
+		</div>
+
+		<div class="footer-col">
+			<h3>Newsletter</h3>
+			<p>You can trust us. we only send promo offers.</p>
+
+			<div class="subscribe">
+				<input type="email" placeholder="Your email Address">
+				<a href="#" class="yellow">SUBSCRIBE</a>
+			</div>
+		</div>
+
+		<div class="copyright">
+			<p>
+				Copyright @ 2022 All rights reserved | This template is made by <a href="https://atulcodex.com" target="_blank">atulcodex</a>
+			</p>
+			<div class="pro-links">
+				<i class="fab fa-facebook"></i>
+				<i class="fab fa-instagram"></i>
+				<i class="fab fa-linkedin-in"></i>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section ends from here -->
+
+	<script>
+		// Show menu links on burger click
+		$('#menu-btn').click(function(){
+			$('nav .navigation ul').addClass('active')
+		});
+
+		// Hide navbar on click function
+		$('#menu-close').click(function(){
+			$('nav .navigation ul').removeClass('active')
+		});
+	</script>
+</body>
+</html>
